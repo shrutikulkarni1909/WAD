@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+    </style>
+</head>
+<body>
+    <h2>Registered Users</h2>
+    <ul id="userList"></ul>
+
+    <script>
+        // Get users from local storage and display them
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
+        const userList = document.getElementById("userList");
+
+        // If there are users, display them
+        if (users.length > 0) {
+            users.forEach(function(user) {
+                const li = document.createElement("li");
+                li.innerHTML = `Username: ${user.username}<br>Email: ${user.email}`; 
+                userList.appendChild(li);
+            });
+        } else {
+            userList.innerHTML = "<li>No users registered yet.</li>";
+        }
+    </script>
+</body>
+</html>
